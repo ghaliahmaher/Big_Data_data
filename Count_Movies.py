@@ -9,7 +9,7 @@ class Count_Movies(MRJob):
 
     def mapper_get_ratings(self, _, line):
         (userID,program_name,duration_in_hour, program_class,genre, hd,original_name,commercial,family,score) = line.split('\t')
-        yield userID, 1
+        yield original_name, 1
 
     def reducer_count_ratings(self, key, values):
         yield key, sum(values)
